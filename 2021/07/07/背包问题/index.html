@@ -6,11 +6,15 @@
   
   <title>Weihong Xie&#39;s Blogs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
+  <meta name="description" content="背包问题背包问题是一类经典的动态规划问题，它非常灵活，需要仔细琢磨体会，本文先对背包问题的几种常见类型作一个总结，期望可以用一套框架解决背包问题。常见背包问题可分为： 01 背包问题：最基本的背包问题就是 01 背包问题：一共有 N 件物品，第 i（i 从 1 开始）件物品的重量为 w[i]，价值为 v[i]。在总重量不超过背包承载上限 W 的情况下，能够装入背包的最大价值是多少？ 完全背包问题：">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Weihong Xie&#39;s Blogs">
-<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:url" content="http://example.com/2021/07/07/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="Weihong Xie&#39;s Blogs">
+<meta property="og:description" content="背包问题背包问题是一类经典的动态规划问题，它非常灵活，需要仔细琢磨体会，本文先对背包问题的几种常见类型作一个总结，期望可以用一套框架解决背包问题。常见背包问题可分为： 01 背包问题：最基本的背包问题就是 01 背包问题：一共有 N 件物品，第 i（i 从 1 开始）件物品的重量为 w[i]，价值为 v[i]。在总重量不超过背包承载上限 W 的情况下，能够装入背包的最大价值是多少？ 完全背包问题：">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-07-06T16:49:38.960Z">
+<meta property="article:modified_time" content="2021-07-05T08:41:01.672Z">
 <meta property="article:author" content="Weihong Xie">
 <meta name="twitter:card" content="summary">
   
@@ -69,9 +73,7 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-背包问题" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-背包问题" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/07/07/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/" class="article-date">
   <time class="dt-published" datetime="2021-07-06T16:49:38.960Z" itemprop="datePublished">2021-07-07</time>
@@ -183,107 +185,19 @@
     </footer>
   </div>
   
-</article>
-
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-Leetcode Note" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/07/07/Leetcode%20Note/" class="article-date">
-  <time class="dt-published" datetime="2021-07-06T16:49:38.956Z" itemprop="datePublished">2021-07-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="Leetcode-Note"><a href="#Leetcode-Note" class="headerlink" title="Leetcode Note"></a>Leetcode Note</h1><hr>
-<h2 id="Data-Structure"><a href="#Data-Structure" class="headerlink" title="Data Structure"></a><strong>Data Structure</strong></h2><h3 id="1-Vector-向量"><a href="#1-Vector-向量" class="headerlink" title="1. Vector 向量"></a>1. Vector 向量</h3><p><strong>特性</strong></p>
-<ul>
-<li>顺序序列</li>
-<li>动态数组</li>
-</ul>
-<p><strong>基本函数</strong><br>构造函数</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>()</span><br><span class="line"><span class="built_in">vector</span>(<span class="keyword">int</span> nSize)</span><br><span class="line"><span class="built_in">vector</span>(<span class="keyword">int</span> nSize, <span class="keyword">const</span> t&amp; t) 全是t的vector</span><br><span class="line"><span class="comment">// ...</span></span><br></pre></td></tr></table></figure>
+  
+    <a href="/2021/07/07/Leetcode%20Note/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
 
-<p>增删查改</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 增</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">push_back</span><span class="params">(<span class="keyword">const</span> T&amp; x)</span></span></span><br><span class="line"><span class="function">iterator <span class="title">insert</span><span class="params">(iterator it, <span class="keyword">const</span> T&amp; x)</span></span></span><br><span class="line"><span class="function"><span class="comment">//删</span></span></span><br><span class="line"><span class="function">iterator <span class="title">erase</span><span class="params">(iterator it)</span></span></span><br><span class="line"><span class="function">iterator <span class="title">erase</span><span class="params">(iterator first, iterator last)</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pop_back</span><span class="params">()</span> <span class="comment">// 删除最后一个 </span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span></span></span><br><span class="line"><span class="function"><span class="comment">// 查</span></span></span><br><span class="line"><span class="function">reference <span class="title">front</span><span class="params">()</span> <span class="comment">// 首元素</span></span></span><br><span class="line"><span class="function">reference <span class="title">back</span><span class="params">()</span> <span class="comment">// 末元素</span></span></span><br><span class="line"><span class="function">iterator <span class="title">begin</span><span class="params">()</span> <span class="comment">// 向量头指针</span></span></span><br><span class="line"><span class="function">iterator <span class="title">end</span><span class="params">()</span> <span class="comment">// 向量尾指针</span></span></span><br><span class="line"><span class="function"><span class="comment">// 其他</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> <span class="keyword">const</span></span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">empty</span><span class="params">()</span> <span class="keyword">const</span></span></span><br><span class="line"><span class="function"><span class="comment">// ...</span></span></span><br></pre></td></tr></table></figure>
-
-<h3 id="2-Queue-队列"><a href="#2-Queue-队列" class="headerlink" title="2. Queue 队列"></a>2. Queue 队列</h3><p>初始化</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 初始化</span></span><br><span class="line">queue&lt;<span class="keyword">const</span> value_type&amp;&gt; q;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 增删查改</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">const</span> value_type&amp; val)</span></span>;</span><br><span class="line"><span class="function">value_type&amp; <span class="title">front</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pop</span><span class="params">()</span></span>;</span><br><span class="line"><span class="comment">// 其他</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">size</span><span class="params">()</span></span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">empty</span><span class="params">()</span> </span></span><br></pre></td></tr></table></figure>
-
-<h3 id="String-字符串"><a href="#String-字符串" class="headerlink" title="String 字符串"></a>String 字符串</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 增删查改</span></span><br><span class="line"><span class="function">string&amp; <span class="title">insert</span> <span class="params">(<span class="keyword">size_t</span> pos, <span class="keyword">const</span> string&amp; str)</span></span>;</span><br><span class="line"><span class="function">string&amp; <span class="title">erase</span> <span class="params">(<span class="keyword">size_t</span> pos = <span class="number">0</span>, <span class="keyword">size_t</span> len = npos)</span></span>;</span><br><span class="line"><span class="function">string <span class="title">substr</span> <span class="params">(<span class="keyword">size_t</span> pos = <span class="number">0</span>, <span class="keyword">size_t</span> len = npos)</span> <span class="keyword">const</span></span>; <span class="comment">//子串</span></span><br><span class="line"><span class="function"><span class="keyword">size_t</span> <span class="title">find</span> <span class="params">(<span class="keyword">const</span> string&amp; str, <span class="keyword">size_t</span> pos = <span class="number">0</span>)</span> <span class="keyword">const</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">size_t</span> <span class="title">find</span> <span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* s, <span class="keyword">size_t</span> pos = <span class="number">0</span>)</span> <span class="keyword">const</span></span>;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/07/07/Leetcode%20Note/" data-id="ckqsagbwl0000pcr79wx7c2zl" data-title="" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-
-  
-    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/07/06/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2021-07-06T15:59:20.467Z" itemprop="datePublished">2021-07-06</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/07/06/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/07/06/hello-world/" data-id="ckqs8r16a00001wr7hqtpeerq" data-title="Hello World" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
 </section>
