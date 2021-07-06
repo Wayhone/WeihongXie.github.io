@@ -4,13 +4,17 @@
   <meta charset="utf-8">
   
   
-  <title>Weihong Xie&#39;s Blogs</title>
+  <title>Record of daily Leetcode | Weihong Xie&#39;s Blogs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Weihong Xie&#39;s Blogs">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="刷题技巧：数据结构的基本存储方式：链式，顺序；数据结构的操作方式：增删查改；数据结构的遍历方式：迭代，递归   Binary Tree1234567void traverse(TreeNode root) &amp;#123;    &#x2F;&#x2F; preorder    traverse(root.left);    &#x2F;&#x2F; inorder    traverse(root.right);    &#x2F;&#x2F; postor">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Record of daily Leetcode">
+<meta property="og:url" content="http://example.com/2021/07/07/Leetcode-Daily/index.html">
 <meta property="og:site_name" content="Weihong Xie&#39;s Blogs">
+<meta property="og:description" content="刷题技巧：数据结构的基本存储方式：链式，顺序；数据结构的操作方式：增删查改；数据结构的遍历方式：迭代，递归   Binary Tree1234567void traverse(TreeNode root) &amp;#123;    &#x2F;&#x2F; preorder    traverse(root.left);    &#x2F;&#x2F; inorder    traverse(root.right);    &#x2F;&#x2F; postor">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-07-06T16:49:38.951Z">
+<meta property="article:modified_time" content="2021-07-06T16:53:43.803Z">
 <meta property="article:author" content="Weihong Xie">
 <meta name="twitter:card" content="summary">
   
@@ -69,190 +73,7 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-Knapsack" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/07/07/Knapsack/" class="article-date">
-  <time class="dt-published" datetime="2021-07-06T16:49:38.960Z" itemprop="datePublished">2021-07-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/07/07/Knapsack/">背包问题</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>背包问题是一类经典的动态规划问题，它非常灵活，需要仔细琢磨体会，本文先对背包问题的几种常见类型作一个总结，期望可以用一套框架解决背包问题。<br>常见背包问题可分为：</p>
-<h2 id="01-背包问题："><a href="#01-背包问题：" class="headerlink" title="01 背包问题："></a>01 背包问题：</h2><p>最基本的背包问题就是 <strong>01 背包问题</strong>：一共有 <code>N</code> 件物品，第 <code>i</code>（i 从 1 开始）件物品的重量为 <code>w[i]</code>，价值为 <code>v[i]</code>。在总重量不超过背包承载上限 <code>W</code> 的情况下，能够装入背包的最大价值是多少？</p>
-<h2 id="完全背包问题："><a href="#完全背包问题：" class="headerlink" title="完全背包问题："></a>完全背包问题：</h2><p>完全背包与 01 背包不同就是每种物品可以有无限多个：一共有 <code>N</code> 种物品，每种物品有无限多个，第 <code>i</code>（i 从 1 开始）种物品的重量为 <code>w[i]</code>，价值为 <code>v[i]</code>。在总重量不超过背包承载上限 <code>W</code> 的情况下，能够装入背包的最大价值是多少？<br>可见 01 背包问题与完全背包问题主要区别就是<strong>物品是否可以重复选取</strong>。</p>
-<h3 id="背包问题具备的特征："><a href="#背包问题具备的特征：" class="headerlink" title="背包问题具备的特征："></a>背包问题具备的特征：</h3><p>是否可以根据一个 <strong>target（直接给出或间接求出）</strong>，<strong>target</strong> 可以是数字也可以是字符串，再给定一个数组 <strong>arrs</strong>，问：能否使用 <strong>arrs</strong> 中的元素做各种排列组合得到 <strong>target</strong>。</p>
-<h2 id="背包问题解法："><a href="#背包问题解法：" class="headerlink" title="背包问题解法："></a>背包问题解法：</h2><h3 id="01-背包问题：-1"><a href="#01-背包问题：-1" class="headerlink" title="01 背包问题："></a>01 背包问题：</h3><p>如果是 01 背包，即数组中的元素不可重复使用，<strong>外循环遍历 arrs，内循环遍历 target</strong>，且<strong>内循环倒序</strong>:</p>
-<h3 id="完全背包问题：-1"><a href="#完全背包问题：-1" class="headerlink" title="完全背包问题："></a>完全背包问题：</h3><p>（1）如果是<strong>完全背包</strong>，即数组中的元素可重复使用并且不考虑元素之间顺序，<strong>arrs 放在外循环（保证 arrs 按顺序），target在内循环</strong>。且<strong>内循环正序</strong>。<br>（2）如果组合问题需考虑元素之间的顺序，需<strong>将 target 放在外循环，将 arrs 放在内循环</strong>，且<strong>内循环正序</strong>。</p>
-<h2 id="例题："><a href="#例题：" class="headerlink" title="例题："></a>例题：</h2><h3 id="01-背包问题"><a href="#01-背包问题" class="headerlink" title="01 背包问题"></a>01 背包问题</h3><ol start="416">
-<li>分割等和子集</li>
-</ol>
-<p>本题要求把数组分成两个等和的子集，相当于找到一个子集，其和为 sum / 2，这个 sum / 2 就是 target（target 间接给出）。<br>于是转化为是否可以用 nums 中的数组合和成 target，01 背包问题，外层循环为选择池 num: nums，内层循环为 target。  </p>
-<p>dp[i] 表示是否存在和为 i 的 num 组合。  </p>
-<p>外层遍历 nums 每个 num；<br>内层遍历 target（由大到小）。<br>对于元素之和等于 i - num 的每一种组合，在最后添加 num 之后即可得到一个元素之和等于 i 的组合，因此dp[i] 依赖于 dp[i - num]，并且在计算 dp[i - num] 时，要保证索引较小的元素值不被覆盖，需要后向更新 dp[i]，并且当 i - num &lt; i 时， dp[i] 已经更新过，于是：<br><code>dp[i] = dp[i] || dp[i - num]</code><br>对于特例：如果 sum 为奇数，那一定找不到符合要求的子集，返回 False。<br>对于边界条件，我们定义 dp[0] = true 表示当 i - num = 0，存在一个 num 和为 i。<br>最后返回 dp[target]。  </p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">canPartition</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> num: nums) &#123;</span><br><span class="line">            sum += num;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> ((sum &amp; <span class="number">1</span>) == <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> target = sum / <span class="number">2</span>;</span><br><span class="line">        <span class="function">vector&lt;<span class="keyword">bool</span>&gt; <span class="title">dp</span><span class="params">(target + <span class="number">1</span>)</span></span>;</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num: nums)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = target; i &gt;= num; i--)&#123;</span><br><span class="line">               </span><br><span class="line">                dp[i] = dp[i] || dp[i - num];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[target];</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>复杂度分析：  </p>
-<ul>
-<li>时间复杂度：O(target × n)，其中 n 是数组 nums 的长度。</li>
-<li>空间复杂度：O(target)。</li>
-</ul>
-<ol start="494">
-<li>目标和</li>
-</ol>
-<p>我们想要的 S = 正数和 - 负数和 = x - y<br>而已知 x 与 y 的和是数组总和：x + y = sum<br>可以求出 x = (S + sum) / 2 = target<br>也就是我们要从 nums 数组里选出几个数，令其和为 target（target 间接给出）。<br>于是转化为是否可以用 nums 中的数组合和成 target，01 背包问题，外层循环为选择池 nums，内层循环为 target。<br>dp[i] 表示和为 i 的 num 组合有 dp[i] 种。  </p>
-<p>外层遍历 nums 每个 num；<br>内层遍历 target（由大到小）。<br>对于元素之和等于 i - num 的每一种排列，在最后添加 num 之后即可得到一个元素之和等于 i 的排列，因此在计算 dp[i] 时，应该计算所有的 dp[i − num] 之和。<br><code>dp[i] = dp[i] + dp[i - num]</code><br>对于边界条件，我们定义 dp[0] = 1 表示只有当不选取任何元素时，元素之和才为 0，因此只有 1 种方案。<br>最后返回 dp[target]  </p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findTargetSumWays</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> S)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num : nums) sum += num;</span><br><span class="line">        <span class="keyword">if</span>(S &gt; sum || (S + sum) % <span class="number">2</span> == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> target = (S + sum) / <span class="number">2</span>;</span><br><span class="line">        <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">dp</span><span class="params">(target + <span class="number">1</span>)</span></span>;</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num : nums)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = target; i &gt;= num; i--)&#123;               </span><br><span class="line">                dp[i] = dp[i] + dp[i - num];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[target];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>复杂度分析：</p>
-<ul>
-<li>时间复杂度：O(target × n)，其中 n 是数组 nums 的长度。</li>
-<li>空间复杂度：O(target)。</li>
-</ul>
-<h3 id="完全背包问题"><a href="#完全背包问题" class="headerlink" title="完全背包问题"></a>完全背包问题</h3><ol start="139">
-<li>单词拆分</li>
-</ol>
-<p>转化为是否可以用 wordDict 中的词组合成 s，完全背包问题，并且为“考虑排列顺序的完全背包问题”，外层循环为 target ，内层循环为选择池 wordDict。<br>dp[i] 表示以 i 结尾的字符串是否可以被 wordDict 中组合而成。  </p>
-<p>外层遍历 s 中每一个与 word 同长度的字串 s.substr(i - sz, sz) ；<br>内层遍历 wordDict 每个 word。<br>判断 s.substr(i - sz, sz) == word：<br>（1）若不相等，说明与该 word 不匹配，继续遍历；<br>（2）若相等，说明从 [i - sz] 到 i 的字符与 word 匹配。<br><code>dp[i] = dp[i] || d[[i - sz]]</code><br>对于边界条件，我们定义 dp[0] = true 表示空串且合法。<br>最后返回 dp[s.size()]  </p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">wordBreak</span><span class="params">(string s, vector&lt;string&gt;&amp; wordDict)</span> </span>&#123;</span><br><span class="line">        <span class="function">vector&lt;<span class="keyword">bool</span>&gt; <span class="title">dp</span><span class="params">(s.size() + <span class="number">1</span>)</span></span>;</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= s.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">auto</span>&amp; word: wordDict)&#123;</span><br><span class="line">                <span class="keyword">int</span> sz = word.<span class="built_in">size</span>();        </span><br><span class="line">                <span class="keyword">if</span> (i - sz &gt;= <span class="number">0</span> &amp;&amp; s.<span class="built_in">substr</span>(i - sz, sz) == word)</span><br><span class="line">                    dp[i] = dp[i] || dp[i - sz];            </span><br><span class="line">            &#125;       </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[s.<span class="built_in">size</span>()];</span><br><span class="line">    &#125;   </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>复杂度分析</p>
-<ul>
-<li>时间复杂度：O(target × n)，其中 n 是数组 nums 的长度。</li>
-<li>空间复杂度：O(target)。</li>
-</ul>
-<ol start="279">
-<li>完全平方数<br>我们想要的 S = 若干个完全平方数的和<br>完全平方数最小为 1，最大为 sqrt(n)<br>也就是我们要从 nums = [1, 2, …, sqrt(n)] 数组里选出几个数，令其平方和为 target = n。<br>于是转化为是否可以用 nums 中的数组合和成 target，完全背包问题，外层循环为选择池 nums，内层循环为 target。<br>dp[i] 表示和为 i 的 nums 组合中完全平方数最少有 dp[i] 个。  </li>
-</ol>
-<p>外层遍历 nums 每个 num；<br>内层遍历 n。  </p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">numSquares</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">dp</span><span class="params">(n+<span class="number">1</span>, INT_MAX)</span></span>;;</span><br><span class="line">        </span><br><span class="line">        dp[<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num = <span class="number">1</span>; num &lt;= <span class="built_in">sqrt</span>(n); num++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= n; i++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(i &gt;= num * num)</span><br><span class="line">                    dp[i] = <span class="built_in">min</span>(dp[i], dp[i - num * num] + <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>对于元素之和等于 i - num * num 的每一种组合，在最后添加 num 之后即可得到一个元素平方和等于 i 的组合，因此在计算 dp[i] 时，应该计算所有的 dp[i − num * num] + 1 中的最小值。<br><code>dp[i] = min(dp[i], dp[i - num * num] + 1)</code><br>对于边界条件，我们定义 dp[0] = 0。<br>最后返回 dp[n]  </p>
-<p>复杂度分析</p>
-<ul>
-<li>时间复杂度：O(n x sqrt{n})，在主步骤中，我们有一个嵌套循环，其中外部循环是 n 次迭代，而内部循环最多需要 sqrt{n} 迭代。</li>
-<li>空间复杂度：O(n)，使用了一个一维数组 dp。</li>
-</ul>
-<ol start="322">
-<li>零钱兑换</li>
-</ol>
-<p>转化为是否可以用 coins 中的数组合和成 amount，完全背包问题，并且为“不考虑排列顺序的完全背包问题”，外层循环为选择池 coins，内层循环为 amount。<br>dp[i] 表示和为 i 的 coin 组合中硬币最少有 dp[i] 个。  </p>
-<p>外层遍历 coins 每个 coin；<br>内层遍历 amount。<br>对于元素之和等于 i - coin 的每一种组合，在最后添加 coin 之后即可得到一个元素之和等于 i 的组合，因此在计算 dp[i] 时，应该计算所有的 dp[i − coin] + 1 中的最小值。<br><code>dp[i] = min(dp[i], dp[i - coin] + 1)</code><br>对于边界条件，我们定义 dp[0] = 0。<br>最后返回 dp[amount]  </p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">coinChange</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; coins, <span class="keyword">int</span> amount)</span> </span>&#123;      </span><br><span class="line">        <span class="function">vector&lt;<span class="keyword">long</span> <span class="keyword">long</span>&gt; <span class="title">dp</span><span class="params">(amount+<span class="number">1</span>, INT_MAX)</span></span>;</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span>&amp; coin: coins)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= amount; i++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(coin &lt;= i)</span><br><span class="line">                    dp[i] = <span class="built_in">min</span>(dp[i], dp[i-coin] + <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">                </span><br><span class="line">        &#125;                        </span><br><span class="line">        <span class="keyword">return</span> dp[amount] == INT_MAX ? <span class="number">-1</span> : dp[amount];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>复杂度分析：</p>
-<ul>
-<li>时间复杂度：O(amount x n)，其中 n 为 coins 大小</li>
-<li>空间复杂度：O(amount)</li>
-</ul>
-<ol start="377">
-<li>组合总和 Ⅳ</li>
-</ol>
-<p>转化为是否可以用 nums 中的数组合和成 target，完全背包问题，并且为“考虑排列顺序的完全背包问题”，外层循环为 target ，内层循环为选择池 nums。<br>dp[i] 表示和为 i 的 num 组合有 dp[i] 种。  </p>
-<p>外层遍历 target；<br>内层遍历 nums 每个 num。<br>对于元素之和等于 i - num 的每一种排列，在最后添加 num 之后即可得到一个元素之和等于 i 的排列，因此在计算 dp[i] 时，应该计算所有的 dp[i − num] 之和。<br><code>dp[i] = dp[i] + dp[i - num]</code><br>对于边界条件，我们定义 dp[0] = 1 表示只有当不选取任何元素时，元素之和才为 0，因此只有 1 种方案。<br>最后返回 dp[target]  </p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">combinationSum4</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">dp</span><span class="params">(target + <span class="number">1</span>)</span></span>;</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= target; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span>&amp; num: nums)&#123;</span><br><span class="line">                <span class="keyword">if</span>(num &lt;= i &amp;&amp; dp[i - num] &lt; INT_MAX - dp[i])</span><br><span class="line">                    dp[i] += dp[i - num];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[target];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>复杂度分析：</p>
-<ul>
-<li>时间复杂度：O(target x n)，其中 n 为 wordDict 大小</li>
-<li>空间复杂度：O(target)</li>
-</ul>
-<ol start="518">
-<li>零钱兑换 II</li>
-</ol>
-<p>转化为是否可以用 coins 中的数组合和成 amount，完全背包问题，并且为“不考虑排列顺序的完全背包问题”，外层循环为选择池 coins，内层循环为 amount。<br>dp[i] 表示和为 i 的 coin 组合有 dp[i] 种。  </p>
-<p>外层遍历 coins 每个 coin；<br>内层遍历 amount。<br>对于元素之和等于 i - coin 的每一种组合，在最后添加 coin 之后即可得到一个元素之和等于 i 的组合，因此在计算 dp[i] 时，应该计算所有的 dp[i − coin] 之和。<br><code>dp[i] = dp[i] + dp[i - coin]</code><br>对于边界条件，我们定义 dp[0] = 1，表示只有当不选取任何元素时，元素之和才为 0，因此只有 1 种方案。<br>最后返回 dp[amount]。  </p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">change</span><span class="params">(<span class="keyword">int</span> amount, vector&lt;<span class="keyword">int</span>&gt;&amp; coins)</span> </span>&#123;</span><br><span class="line">        <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">dp</span><span class="params">(amount + <span class="number">1</span>)</span></span>;</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span>&amp; coin: coins)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= amount; i++)&#123;</span><br><span class="line">            </span><br><span class="line">                <span class="keyword">if</span>(coin &lt;= i)</span><br><span class="line">                    dp[i] += dp[i - coin];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[amount];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>复杂度分析：</p>
-<ul>
-<li>时间复杂度：O(amount x n)，其中 n 为 coins 大小</li>
-<li>空间复杂度：O(amount)</li>
-</ul>
-<p>作者：wulafly-2<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/partition-equal-subset-sum/solution/yi-tao-kuang-jia-jie-jue-bei-bao-wen-ti-p9saf/">https://leetcode-cn.com/problems/partition-equal-subset-sum/solution/yi-tao-kuang-jia-jie-jue-bei-bao-wen-ti-p9saf/</a><br>来源：力扣（LeetCode）<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/07/07/Knapsack/" data-id="ckqsalqa60001a4r7566r5yau" data-title="背包问题" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Leetcode-Note" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/07/07/Leetcode-Note/" class="article-date">
-  <time class="dt-published" datetime="2021-07-06T16:49:38.956Z" itemprop="datePublished">2021-07-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/07/07/Leetcode-Note/">Leetcode Note</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="Data-Structure"><a href="#Data-Structure" class="headerlink" title="Data Structure"></a><strong>Data Structure</strong></h2><h3 id="1-Vector-向量"><a href="#1-Vector-向量" class="headerlink" title="1. Vector 向量"></a>1. Vector 向量</h3><p><strong>特性</strong></p>
-<ul>
-<li>顺序序列</li>
-<li>动态数组</li>
-</ul>
-<p><strong>基本函数</strong><br>构造函数</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>()</span><br><span class="line"><span class="built_in">vector</span>(<span class="keyword">int</span> nSize)</span><br><span class="line"><span class="built_in">vector</span>(<span class="keyword">int</span> nSize, <span class="keyword">const</span> t&amp; t) 全是t的vector</span><br><span class="line"><span class="comment">// ...</span></span><br></pre></td></tr></table></figure>
-
-<p>增删查改</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 增</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">push_back</span><span class="params">(<span class="keyword">const</span> T&amp; x)</span></span></span><br><span class="line"><span class="function">iterator <span class="title">insert</span><span class="params">(iterator it, <span class="keyword">const</span> T&amp; x)</span></span></span><br><span class="line"><span class="function"><span class="comment">//删</span></span></span><br><span class="line"><span class="function">iterator <span class="title">erase</span><span class="params">(iterator it)</span></span></span><br><span class="line"><span class="function">iterator <span class="title">erase</span><span class="params">(iterator first, iterator last)</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pop_back</span><span class="params">()</span> <span class="comment">// 删除最后一个 </span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span></span></span><br><span class="line"><span class="function"><span class="comment">// 查</span></span></span><br><span class="line"><span class="function">reference <span class="title">front</span><span class="params">()</span> <span class="comment">// 首元素</span></span></span><br><span class="line"><span class="function">reference <span class="title">back</span><span class="params">()</span> <span class="comment">// 末元素</span></span></span><br><span class="line"><span class="function">iterator <span class="title">begin</span><span class="params">()</span> <span class="comment">// 向量头指针</span></span></span><br><span class="line"><span class="function">iterator <span class="title">end</span><span class="params">()</span> <span class="comment">// 向量尾指针</span></span></span><br><span class="line"><span class="function"><span class="comment">// 其他</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> <span class="keyword">const</span></span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">empty</span><span class="params">()</span> <span class="keyword">const</span></span></span><br><span class="line"><span class="function"><span class="comment">// ...</span></span></span><br></pre></td></tr></table></figure>
-
-<h3 id="2-Queue-队列"><a href="#2-Queue-队列" class="headerlink" title="2. Queue 队列"></a>2. Queue 队列</h3><p>初始化</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 初始化</span></span><br><span class="line">queue&lt;<span class="keyword">const</span> value_type&amp;&gt; q;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 增删查改</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">const</span> value_type&amp; val)</span></span>;</span><br><span class="line"><span class="function">value_type&amp; <span class="title">front</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pop</span><span class="params">()</span></span>;</span><br><span class="line"><span class="comment">// 其他</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">size</span><span class="params">()</span></span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">empty</span><span class="params">()</span> </span></span><br></pre></td></tr></table></figure>
-
-<h3 id="String-字符串"><a href="#String-字符串" class="headerlink" title="String 字符串"></a>String 字符串</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 增删查改</span></span><br><span class="line"><span class="function">string&amp; <span class="title">insert</span> <span class="params">(<span class="keyword">size_t</span> pos, <span class="keyword">const</span> string&amp; str)</span></span>;</span><br><span class="line"><span class="function">string&amp; <span class="title">erase</span> <span class="params">(<span class="keyword">size_t</span> pos = <span class="number">0</span>, <span class="keyword">size_t</span> len = npos)</span></span>;</span><br><span class="line"><span class="function">string <span class="title">substr</span> <span class="params">(<span class="keyword">size_t</span> pos = <span class="number">0</span>, <span class="keyword">size_t</span> len = npos)</span> <span class="keyword">const</span></span>; <span class="comment">//子串</span></span><br><span class="line"><span class="function"><span class="keyword">size_t</span> <span class="title">find</span> <span class="params">(<span class="keyword">const</span> string&amp; str, <span class="keyword">size_t</span> pos = <span class="number">0</span>)</span> <span class="keyword">const</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">size_t</span> <span class="title">find</span> <span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* s, <span class="keyword">size_t</span> pos = <span class="number">0</span>)</span> <span class="keyword">const</span></span>;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/07/07/Leetcode-Note/" data-id="ckqsalqag0002a4r713h72hqw" data-title="Leetcode Note" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Leetcode-Daily" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-Leetcode-Daily" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/07/07/Leetcode-Daily/" class="article-date">
   <time class="dt-published" datetime="2021-07-06T16:49:38.951Z" itemprop="datePublished">2021-07-07</time>
@@ -265,8 +86,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/07/07/Leetcode-Daily/">Record of daily Leetcode</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      Record of daily Leetcode
     </h1>
   
 
@@ -416,62 +237,28 @@
     </footer>
   </div>
   
-</article>
-
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/07/06/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2021-07-06T15:59:20.467Z" itemprop="datePublished">2021-07-06</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+    <a href="/2021/07/07/Leetcode-Note/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
         
+          Leetcode Note
+        
+      </div>
+    </a>
   
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/07/06/hello-world/">Hello World</a>
-    </h1>
   
+    <a href="/2021/07/06/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/07/06/hello-world/" data-id="ckqs8r16a00001wr7hqtpeerq" data-title="Hello World" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-
-  
 
 
 </section>
